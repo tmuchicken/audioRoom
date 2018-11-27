@@ -123,8 +123,7 @@ $(function(){
 
         navigator.mediaDevices.getUserMedia(constraints)
             .then(function (stream) {
-                $('#myStream').get(0).srcObject = stream;
-
+                //$('#myStream').get(0).srcObject = stream;  //とりあえず消した
  
                 //AudioContextを作成
                 var context  = new AudioContext();
