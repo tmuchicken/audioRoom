@@ -140,10 +140,10 @@ $(function(){
                 StereoPanner.pan.value = sound;
               
                 //peer1の作成
-                var peer = context.createMediaStreamDestination();
+                var peer1 = context.createMediaStreamDestination();
             
-                StereoPanner.connect(peer); //ココの先頭変えるよ
-                localStream = peer.stream;
+                StereoPanner.connect(peer1); //ココの先頭変えるよ
+                localStream = peer1.stream;
 
 
                 if(existingCall){
