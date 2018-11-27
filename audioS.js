@@ -301,7 +301,12 @@ peer.on('disconnected', function(){
 ///////////////発信処理・切断処理・着信処理
 $('#make-call').submit(function(e){
     e.preventDefault();
-    const call = peer.call($('#callto-id').val(), localStream1); 
+    let roomName = $('#join-room').val();
+    if(!roomName){
+        retuen;
+        }
+    
+    const call = peer.joinRoom(roomName,{mode:'sfu',stream:localStream1}); 
     setupCallEventHandlers(call);
     });
 
@@ -320,17 +325,17 @@ function setupCallEventHandlers(call){
     };
 
     existingCall = call;
-
-    
     setupEndCallUI(call);
-
+    setupEndCallUI();
+    $('#room-id').text(call.name);
+    
+    
     call.on('stream', function(stream){
         addVideo(call,stream);
-        setupEndCallUI();
-        $('#their-id').text(call.remoteId);
-    });
+            });
     call.on('close', function(){
         removeVideo(call.remoteId);
+        
         setupMakeCallUI();
     });
 }
