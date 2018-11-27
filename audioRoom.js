@@ -30,7 +30,8 @@ $(function(){
         }
     }
        
-      
+    function start(task){
+
     navigator.mediaDevices.enumerateDevices()
         .then(function(deviceInfos) {
             for (let i = 0; i !== deviceInfos.length; ++i) {
@@ -45,13 +46,23 @@ $(function(){
                     videoSelect.append(option);
                 }
             }
-            videoSelect.on('change', setupGetUserMedia());
-            audioSelect.on('change', setupGetUserMedia());
-            //setupGetUserMedia();
+            videoSelect.on('change', setupGetUserMedia);
+            audioSelect.on('change', setupGetUserMedia);
+
+            if (task == 1){
+                setupGetUserMedia(1);
+            } else if (task == 0){
+                setupGetUserMedia(0);
+            } else if (task == -1){
+                setupGetUserMedia(-1);
+            }
+                    
+            
         }).catch(function (error) {
             console.error('mediaDevices.enumerateDevices() error:', error);
             return;
         });
+    }
 
     $('#peerid-ui').hide();
     peer = new Peer(/*id,*/{
@@ -123,6 +134,7 @@ $(function(){
             audio: {deviceId: {exact: audioSource}},
             //video: {deviceId: {exact: videoSource}}
         };
+
         /*
         constraints.video.width = {
             min: 320,
@@ -173,15 +185,15 @@ $(function(){
 
         //オーディオシステムの選択
     $('#start_video_button_L').click(function () {
-        setupGetUserMedia(-1);
+        start(-1);
     });
 
     $('#start_video_button_R').click(function () {
-        setupGetUserMedia(1);
+        start(1);
     });
 
     $('#start_video_button_W').click(function () {
-        setupGetUserMedia(0);
+        start(0);
     });
 
     function setupCallEventHandlers(call){
