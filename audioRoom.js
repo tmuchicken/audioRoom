@@ -185,7 +185,7 @@ $('#start_video_button_W').click(function () {
     startSelectedVideoAudio(0);
 });
 
-
+/*
 //peeridの選択
 $('#AudioLR1').click(function () {
     getpeerid("ALR1");
@@ -245,7 +245,7 @@ $('#AudioUserR2').click(function () {
 $('#random').click(function () {
     getpeerid(null);
 });
-
+*/
 
 //イベント id取得後じゃないと動作しない
 function start() {
