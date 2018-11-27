@@ -49,7 +49,6 @@ $(function(){
             console.error('mediaDevices.enumerateDevices() error:', error);
             return;
         });
-    }
 
     $('#peerid-ui').hide();
     peer = new Peer(/*id,*/{
