@@ -45,8 +45,8 @@ $(function(){
                     videoSelect.append(option);
                 }
             }
-            videoSelect.on('change', setupGetUserMedia);
-            audioSelect.on('change', setupGetUserMedia);
+            videoSelect.on('change', setupGetUserMedia());
+            audioSelect.on('change', setupGetUserMedia());
             //setupGetUserMedia();
         }).catch(function (error) {
             console.error('mediaDevices.enumerateDevices() error:', error);
