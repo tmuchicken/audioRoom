@@ -39,7 +39,7 @@ $(function(){
         });
 
     $('#peerid-ui').hide();
-    peer = new Peer(id,{
+    peer = new Peer(/*id,*/{
             key: '9373b614-604f-4fd5-b96a-919b20a7c24e',    //APIkey
             debug: 3
     });
