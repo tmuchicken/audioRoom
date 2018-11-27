@@ -171,15 +171,15 @@ $(function(){
 
         //オーディオシステムの選択
     $('#start_video_button_L').click(function () {
-        start(-1);
+        setupGetUserMedia(-1);
     });
 
     $('#start_video_button_R').click(function () {
-        start(1);
+        setupGetUserMedia(1);
     });
 
     $('#start_video_button_W').click(function () {
-        start(0);
+        setupGetUserMedia(0);
     });
 
     function setupCallEventHandlers(call){
