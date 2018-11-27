@@ -142,7 +142,7 @@ $(function(){
                 //peer1の作成
                 var peer = context.createMediaStreamDestination();
             
-                StereoPanner.connect(peer1); //ココの先頭変えるよ
+                StereoPanner.connect(peer); //ココの先頭変えるよ
                 localStream = peer.stream;
 
 
