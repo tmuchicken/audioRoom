@@ -117,7 +117,8 @@ $(function(){
         let audioSource = $('#audioSource').val();
         //let videoSource = $('#videoSource').val();
         let constraints = {
-            audio: {deviceId: {exact: audioSource}},
+            audio: {deviceId: {exact: audioSource},
+            echoCancellation:false},
             //video: {deviceId: {exact: videoSource}}
         };
 
@@ -167,7 +168,7 @@ $(function(){
             console.error('mediaDevice.getUserMedia() error:', error);
             return;
         });
-    }
+    };
 
         //オーディオシステムの選択
     $('#start_video_button_L').click(function () {
