@@ -29,8 +29,6 @@ $(function(){
          localStream = null;
         }
     }
-       
-    function start(task){
 
     navigator.mediaDevices.enumerateDevices()
         .then(function(deviceInfos) {
@@ -46,17 +44,6 @@ $(function(){
                     videoSelect.append(option);
                 }
             }
-            videoSelect.on('change', setupGetUserMedia);
-            audioSelect.on('change', setupGetUserMedia);
-
-            if (task == 1){
-                setupGetUserMedia(1);
-            } else if (task == 0){
-                setupGetUserMedia(0);
-            } else if (task == -1){
-                setupGetUserMedia(-1);
-            }
-                    
             
         }).catch(function (error) {
             console.error('mediaDevices.enumerateDevices() error:', error);
