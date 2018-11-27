@@ -13,7 +13,23 @@ $(function(){
     let recorder = null;
     let audioSelect = $('#audioSource');
     let videoSelect = $('#videoSource');
-    
+
+    function stopVideo() {
+        localVideo.pause();
+        location.reload(true);
+        if (localVideo.srcObject) {
+          localVideo.srcObject = null;
+        }
+        else {
+          localVideo.src = "";
+        }
+      
+        if (localStream) {
+         stopStream(localStream);
+         localStream = null;
+        }
+    }
+       
       
     navigator.mediaDevices.enumerateDevices()
         .then(function(deviceInfos) {
@@ -31,7 +47,7 @@ $(function(){
             }
             videoSelect.on('change', setupGetUserMedia);
             audioSelect.on('change', setupGetUserMedia);
-            setupGetUserMedia();
+            //setupGetUserMedia();
         }).catch(function (error) {
             console.error('mediaDevices.enumerateDevices() error:', error);
             return;
