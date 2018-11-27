@@ -1,55 +1,57 @@
 <!DOCTYPE html>
 <html>
-<head>
- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
- <title>media devices</title>
+<head lang="ja">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>SkyWay Handson</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="audioRoom.js"></script>
 </head>
 <body>
 
- <button id="devices_button" onclick="getDeviceList()">getDevices</button>
+    <button id="devices_button" onclick="getDeviceList()">getDevices</button>
  
- <select id="mic_list" size="1" style="width:160pt;">
- <option>(audio)</option>
- </select>
- 
- <br>
- <button id="start_video_button_L" onclick="startSelectedVideoAudio()">START[左から再生]</button>
- <button id="start_video_button_R" onclick="startSelectedVideoAudio()">START[右から再生]</button>
- <button id="start_video_button_W" onclick="startSelectedVideoAudio()">START[ステレオ再生]</button>
- <button id="stop_button" onclick="stopVideo()">StopVideo</button>  <!-- 1010用 -->
- <div id="container"></div>
+    <select id="mic_list" size="1" style="width:160pt;">
+     <option>(audio)</option>
+     </select>
+        
+    <br>
+    <button id="start_video_button_L" onclick="setupGetUserMedia()">START[左から再生]</button>
+    <button id="start_video_button_R" onclick="setupGetUserMedia()">START[右から再生]</button>
+    <button id="start_video_button_W" onclick="setupGetUserMedia()">START[ステレオ再生]</button>
+    <button id="stop_button" onclick="stopVideo()">StopVideo</button>  <!-- 1010用 -->
+    <div id="container"></div>
 
 
- <div class="pure-u-1-3">
- <p>Share this room with others so they can call you.</p>
- <div id="peerid-ui">
-    <p>select your id</p>
 
+<div class="videosContainer">
+    <video id="myStream" autoplay muted="true"></video>
 </div>
 
- <!--<font color="blue"><p>make call　先をtc4 とかに設定して"call" 連打してください</p></font>-->
-
- 
- <h3>Make a call</h3>
- <form id="make-call" class="pure-form">
-    <input type="text" placeholder="Join room..." id="join-room">
-    <button type="submit">Join</button>
-     <button href="#" class="pure-button pure-button-success" type="submit">Call</button>
- </form>
- <form id="end-call" class="pure-form">
-     <p>Currently in room <span id="room-id">...</span></p>
-     <button>Leave</button>
-     <button href="#" class="pure-button pure-button-success" type="submit">
-         End Call
-     </button>
-
- </form>
+<div class="myControllerContainer">
+    <p>Your id: <span id="my-id">...</span></p>
+    <div class="select">
+        <label for="audioSource">Audio input source: </label><select id="audioSource"></select>
+    </div>
+    <div class="select">
+        <label for="videoSource">Video source: </label><select id="videoSource"></select>
+    </div>
+    <form id="make-call">
+        <input type="text" placeholder="Join room..." id="join-room">
+        <button type="submit">Join</button>
+    </form>
+    <div id="end-call">
+        <p>Currently in room <span id="room-id">...</span></p>
+        <button>Leave</button>
+    </div>
+    <div id="recording">
+        <button>Recording</button>
+        <a href="#" id="downloadlink">Download</a>
+        <p>※ 1:1の場合にリモートを録画可能</p>
+    </div>
 </div>
+
 </body>
-
-
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="https://cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
-<script type="text/javascript" src="audioRoom.js"></script>
 </html>
