@@ -103,11 +103,12 @@ $(function(){
 
     function setupGetUserMedia(sound) {
         let audioSource = $('#audioSource').val();
-        let videoSource = $('#videoSource').val();
+        //let videoSource = $('#videoSource').val();
         let constraints = {
             audio: {deviceId: {exact: audioSource}},
-            video: {deviceId: {exact: videoSource}}
+            //video: {deviceId: {exact: videoSource}}
         };
+        /*
         constraints.video.width = {
             min: 320,
             max: 320
@@ -116,7 +117,7 @@ $(function(){
             min: 240,
             max: 240        
         };
-
+        */
         if(localStream){
             localStream = null;
         }
