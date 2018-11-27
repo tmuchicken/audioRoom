@@ -344,11 +344,17 @@ function setupCallEventHandlers(call){
 
 ///////////video要素の再生・削除・ボタン表示
 function addVideo(call,stream){
-    $('#their-video').get(0).srcObject = stream;
+    const videodom = $('<video autoplay>');
+    videodom.attr('id',stream.peerId);
+    videodom.get(0).srcObject = stream;
 }
 
 function removeVideo(peerId){
     $('#'+peerId).remove();
+}
+
+function removeAllRemoteVideos(){
+    $('.videosContainer').empty();
 }
 
 function setupMakeCallUI(){
