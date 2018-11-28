@@ -57,7 +57,7 @@ $(function(){
             debug: 3
     });
 
-    function setupGetUserMedia(sound) {
+    function startSelectedVideoAudio(sound)  {
         let audioSource = $('#audioSource').val();
         //let videoSource = $('#videoSource').val();
         let constraints = {
@@ -170,17 +170,17 @@ $(function(){
         }
     });
 
-           //オーディオシステムの選択
+       //オーディオシステムの選択
     $('#start_video_button_L').click(function () {
-        setupGetUserMedia(-1);
+        startSelectedVideoAudio(-1);
     });
 
     $('#start_video_button_R').click(function () {
-        setupGetUserMedia(1);
+        startSelectedVideoAudio(1);
     });
 
     $('#start_video_button_W').click(function () {
-        setupGetUserMedia(0);
+      startSelectedVideoAudio(0);
     });
 
     function setupCallEventHandlers(call){
