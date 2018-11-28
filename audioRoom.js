@@ -1,11 +1,15 @@
 /*
 更新日時
 2018/11/28/14:34
+
+感謝のURL
+https://github.com/skyway/skyway-js-sdk/blob/master/examples/p2p-broadcast/script.js
+https://qiita.com/yusuke84/items/54dce88f9e896903e64f#step3-1
 */
-//$(function(){
 
-    'use strict';
+'use strict';
 
+$(function(){ //やる意味あるらしいけどエラー出ねぇから嫌いやわ
 
     //audio処理用
     window.AudioContext = window.AudioContext || window.webkitAudioContext; 
@@ -16,8 +20,6 @@
     let remoteStream = null;
     let recorder = null;
     let audioSelect = $('#audioSource');
-    let videoSelect = $('#videoSource');
-
 
     function stopVideo() {
         localVideo.pause();
@@ -46,8 +48,7 @@
                     audioSelect.append(option);
                 } else if (deviceInfo.kind === 'videoinput') {
                     option.text(deviceInfo.label);
-                    videoSelect.append(option);
-                }
+                                    }
             }
             
         }).catch(function (error) {
@@ -67,19 +68,8 @@
         let constraints = {
             audio: {deviceId: {exact: audioSource},
             echoCancellation:false},
-            //video: {deviceId: {exact: videoSource}}
         };
 
-        /*
-        constraints.video.width = {
-            min: 320,
-            max: 320
-        };
-        constraints.video.height = {
-            min: 240,
-            max: 240        
-        };
-        */
         if(localStream){
             localStream = null;
         }
@@ -243,4 +233,4 @@
         $('#recording').show();
     }
 
-//});
+});
