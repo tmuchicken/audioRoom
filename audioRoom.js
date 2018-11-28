@@ -14,6 +14,7 @@ $(function(){
     let audioSelect = $('#audioSource');
     let videoSelect = $('#videoSource');
 
+
     function stopVideo() {
         localVideo.pause();
         location.reload(true);
@@ -54,63 +55,6 @@ $(function(){
     peer = new Peer(/*id,*/{
             key: '9373b614-604f-4fd5-b96a-919b20a7c24e',    //APIkey
             debug: 3
-    });
-
-
-    peer.on('open', function(){
-        $('#my-id').text(peer.id);
-    });
-
-    peer.on('error', function(err){
-        alert(err.message);
-    });
-
-    $('#make-call').submit(function(e){
-        e.preventDefault();
-        let roomName = $('#join-room').val();
-        if (!roomName) {
-            return;
-        }
-        const　call = peer.joinRoom(roomName, {mode: 'sfu', stream: localStream});
-        setupCallEventHandlers(call);
-    });
-
-    $('#end-call').click(function(){
-        existingCall.close();
-    });
-
-    $('#recording button').click(function(){
-        if(recorder){
-            recorder.stop();
-            $('#recording button').text('Recording');
-            $('#downloadlink').hide();
-        }else if(remoteStream){
-            let chunks = [];
-            let options = {
-                mimeType : 'video/webm; codecs=vp9'
-            };
-
-            recorder = new MediaRecorder(remoteStream,options);
-
-            recorder.ondataavailable = function(evt) {
-                console.log("data available: evt.data.type=" + evt.data.type + " size=" + evt.data.size);
-                chunks.push(evt.data);
-            };
-
-            recorder.onstop = function(evt) {
-                console.log('recorder.onstop(), so playback');
-                recorder = null;
-                const videoBlob = new Blob(chunks, { type: "video/webm" });
-                blobUrl = window.URL.createObjectURL(videoBlob);
-                $('#downloadlink').attr("download", 'recorded.webm');
-                $('#downloadlink').attr("href", blobUrl);
-                $('#downloadlink').show();
-            };
-            recorder.start(1000);
-            console.log('start recording');
-            $('#recording button').text('Stop');
-            $('#downloadlink').hide();
-        }
     });
 
     function setupGetUserMedia(sound) {
@@ -170,7 +114,63 @@ $(function(){
         });
     };
 
-        //オーディオシステムの選択
+    peer.on('open', function(){
+        $('#my-id').text(peer.id);
+    });
+
+    peer.on('error', function(err){
+        alert(err.message);
+    });
+
+    $('#make-call').submit(function(e){
+        e.preventDefault();
+        let roomName = $('#join-room').val();
+        if (!roomName) {
+            return;
+        }
+        const　call = peer.joinRoom(roomName, {mode: 'sfu', stream: localStream});
+        setupCallEventHandlers(call);
+    });
+
+    $('#end-call').click(function(){
+        existingCall.close();
+    });
+
+    $('#recording button').click(function(){
+        if(recorder){
+            recorder.stop();
+            $('#recording button').text('Recording');
+            $('#downloadlink').hide();
+        }else if(remoteStream){
+            let chunks = [];
+            let options = {
+                mimeType : 'video/webm; codecs=vp9'
+            };
+
+            recorder = new MediaRecorder(remoteStream,options);
+
+            recorder.ondataavailable = function(evt) {
+                console.log("data available: evt.data.type=" + evt.data.type + " size=" + evt.data.size);
+                chunks.push(evt.data);
+            };
+
+            recorder.onstop = function(evt) {
+                console.log('recorder.onstop(), so playback');
+                recorder = null;
+                const videoBlob = new Blob(chunks, { type: "video/webm" });
+                blobUrl = window.URL.createObjectURL(videoBlob);
+                $('#downloadlink').attr("download", 'recorded.webm');
+                $('#downloadlink').attr("href", blobUrl);
+                $('#downloadlink').show();
+            };
+            recorder.start(1000);
+            console.log('start recording');
+            $('#recording button').text('Stop');
+            $('#downloadlink').hide();
+        }
+    });
+
+           //オーディオシステムの選択
     $('#start_video_button_L').click(function () {
         setupGetUserMedia(-1);
     });
