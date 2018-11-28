@@ -1,6 +1,6 @@
 /*
 更新日時
-2018/11/28/14:34
+2018/11/28/15:05
 
 感謝のURL
 https://github.com/skyway/skyway-js-sdk/blob/master/examples/p2p-broadcast/script.js
@@ -62,9 +62,8 @@ $(function(){ //やる意味あるらしいけどエラー出ねぇから嫌い�
             debug: 3
     });
 
-    function startSelectedVideoAudio(sound)  {
+    function startSelectedVideoAudio()  {
         let audioSource = $('#audioSource').val();
-        //let videoSource = $('#videoSource').val();
         let constraints = {
             audio: {deviceId: {exact: audioSource},
             echoCancellation:false},
@@ -89,7 +88,7 @@ $(function(){ //やる意味あるらしいけどエラー出ねぇから嫌い�
                 //StereoPannerの作成
                 var StereoPanner = context.createStereoPanner();
                 panner.connect(StereoPanner);
-                StereoPanner.pan.value = sound;
+                StereoPanner.pan.value = 0;
               
                 //peer1の作成
                 var peer1 = context.createMediaStreamDestination();
@@ -165,16 +164,8 @@ $(function(){ //やる意味あるらしいけどエラー出ねぇから嫌い�
     });
 
        //オーディオシステムの選択
-    $('#start_video_button_L').click(function () {
-        startSelectedVideoAudio(-1);
-    });
-
-    $('#start_video_button_R').click(function () {
-        startSelectedVideoAudio(1);
-    });
-
     $('#start_video_button_W').click(function () {
-      startSelectedVideoAudio(0);
+      startSelectedVideoAudio();
     });
 
     function setupCallEventHandlers(call){
