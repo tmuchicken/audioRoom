@@ -1,4 +1,4 @@
-$(function(){
+//$(function(){
 
     'use strict';
 
@@ -239,4 +239,4 @@ $(function(){
         $('#recording').show();
     }
 
-});
+//});
