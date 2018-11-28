@@ -1,6 +1,6 @@
 /*
 更新日時
-2018/11/28/15:05
+2018/11/28/17:05
 
 感謝のURL
 https://github.com/skyway/skyway-js-sdk/blob/master/examples/p2p-broadcast/script.js
@@ -21,21 +21,6 @@ $(function(){ //やる意味あるらしいけどエラー出ねぇから嫌い�
     let recorder = null;
     let audioSelect = $('#audioSource');
 
-    function stopVideo() {
-        localVideo.pause();
-        location.reload(true);
-        if (localVideo.srcObject) {
-          localVideo.srcObject = null;
-        }
-        else {
-          localVideo.src = "";
-        }
-      
-        if (localStream) {
-         stopStream(localStream);
-         localStream = null;
-        }
-    }
 
     navigator.mediaDevices.enumerateDevices()
         .then(function(deviceInfos) {
