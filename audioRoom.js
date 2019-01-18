@@ -10,7 +10,7 @@ https://qiita.com/yusuke84/items/54dce88f9e896903e64f#step3-1
 
 'use strict';
 
-$(function(){ //やる意味あるらしいけどエラー出ねぇから嫌いやわ
+//$(function(){ //やる意味あるらしいけどエラー出ねぇから嫌いやわ
 
     //audio処理用
     window.AudioContext = window.AudioContext || window.webkitAudioContext; 
@@ -213,4 +213,4 @@ $(function(){ //やる意味あるらしいけどエラー出ねぇから嫌い�
         $('#recording').show();
     }
 
-});
+//});
