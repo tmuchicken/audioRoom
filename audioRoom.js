@@ -151,6 +151,7 @@ $(function(){ //やる意味あるらしいけどエラー出ねぇから嫌い�
        //オーディオシステムの選択
     $('#start_video_button_W').click(function () {
       startSelectedVideoAudio();
+      console.log("スタートしました");
     });
 
     function setupCallEventHandlers(call){
