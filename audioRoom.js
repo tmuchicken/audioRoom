@@ -81,7 +81,7 @@ $(function(){ //やる意味あるらしいけどエラー出ねぇから嫌い�
             
                 StereoPanner.connect(peer1); //ココの先頭変えるよ
                 localStream = peer1.stream;
-
+                console.log("streamを送信");
 
                 if(existingCall){
                     existingCall.replaceStream(stream);
