@@ -71,15 +71,16 @@ $(function(){ //やる意味あるらしいけどエラー出ねぇから嫌い�
                 var panner = context.createPanner();
                 panner.panningModel = 'HRTF';
                 source.connect(panner);
+                /*    
                 //StereoPannerの作成
                 var StereoPanner = context.createStereoPanner();
                 panner.connect(StereoPanner);
                 //StereoPanner.pan.value = 0;
-              
+                */
                 //peer1の作成
                 var peer1 = context.createMediaStreamDestination();
             
-                StereoPanner.connect(peer1); //ココの先頭変えるよ
+                panner.connect(peer1); //ココの先頭変えるよ
                 localStream = peer1.stream;
                 console.log("streamを送信");
 
