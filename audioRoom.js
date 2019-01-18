@@ -1,6 +1,7 @@
 /*
 更新日時
 2018/11/28/17:05
+2019/01/18/12:10 音声が出ないエラーs
 
 感謝のURL
 https://github.com/skyway/skyway-js-sdk/blob/master/examples/p2p-broadcast/script.js
@@ -73,7 +74,7 @@ $(function(){ //やる意味あるらしいけどエラー出ねぇから嫌い�
                 //StereoPannerの作成
                 var StereoPanner = context.createStereoPanner();
                 panner.connect(StereoPanner);
-                StereoPanner.pan.value = 0;
+                //StereoPanner.pan.value = 0;
               
                 //peer1の作成
                 var peer1 = context.createMediaStreamDestination();
@@ -108,6 +109,7 @@ $(function(){ //やる意味あるらしいけどエラー出ねぇから嫌い�
         }
         const　call = peer.joinRoom(roomName, {mode: 'sfu', stream: localStream});
         setupCallEventHandlers(call);
+        console.log("make call したよ");
     });
 
     $('#end-call').click(function(){
